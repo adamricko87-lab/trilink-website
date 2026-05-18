@@ -70,8 +70,10 @@
   }
 
   .nav-links {
-    display: flex; gap: 2rem; list-style: none;
+    display: flex; gap: 2rem; list-style: none; align-items: center;
   }
+
+  .nav-links > li { position: relative; }
 
   .nav-links a {
     color: var(--muted);
@@ -80,6 +82,7 @@
     font-weight: 500;
     letter-spacing: 0.03em;
     transition: color 0.2s;
+    display: flex; align-items: center; gap: 5px;
   }
 
   .nav-links a:hover { color: var(--white); }
@@ -91,6 +94,44 @@
     border-radius: 6px;
     font-weight: 600 !important;
   }
+
+  .has-dropdown > a::after { content: '▾'; font-size: 0.75rem; opacity: 0.6; }
+
+  .dropdown {
+    display: none;
+    position: absolute; top: calc(100% + 16px); left: -16px;
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-width: 230px;
+    padding: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    z-index: 200;
+  }
+
+  .has-dropdown:hover .dropdown { display: block; }
+
+  .dropdown a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--muted) !important;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .dropdown a:hover { background: var(--navy3); color: var(--white) !important; }
+
+  .dd-icon {
+    width: 28px; height: 28px;
+    background: rgba(26,111,245,0.12);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0;
+  }
+
+  .dropdown-divider { height: 1px; background: var(--border); margin: 6px 8px; }
 
   /* HERO */
   .hero {
@@ -622,7 +663,17 @@
     <span class="logo-text">TRILINK</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
+    <li class="has-dropdown">
+      <a href="#services">Services</a>
+      <div class="dropdown">
+        <a href="managed-networks.html"><span class="dd-icon">🌐</span> Managed Networks</a>
+        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
+        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
+        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
+        <div class="dropdown-divider"></div>
+        <a href="hmo-internet.html"><span class="dd-icon">🏠</span> HMO / Landlord Internet</a>
+      </div>
+    </li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#testimonials">Clients</a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
@@ -726,7 +777,7 @@
       <div class="service-icon">🌐</div>
       <h3>Managed Networks</h3>
       <p>End-to-end design, deployment, and ongoing management of your network infrastructure — LAN, WAN, SD-WAN, and wireless. Built for performance and reliability.</p>
-      <a href="#contact" class="service-link">Learn more →</a>
+      <a href="managed-networks.html" class="service-link">Learn more →</a>
     </div>
     <div class="service-card">
       <div class="service-icon">🛡️</div>
@@ -744,19 +795,19 @@
       <div class="service-icon">📡</div>
       <h3>24/7 Monitoring</h3>
       <p>Proactive network monitoring with real-time alerting. We identify and resolve issues before they impact your operations.</p>
-      <a href="#contact" class="service-link">Learn more →</a>
+      <a href="monitoring.html" class="service-link">Learn more →</a>
     </div>
     <div class="service-card">
       <div class="service-icon">🖥️</div>
       <h3>IT Helpdesk & Support</h3>
       <p>Responsive helpdesk support for your team. Remote and on-site assistance, software support, and device management — all under one roof.</p>
-      <a href="#contact" class="service-link">Learn more →</a>
+      <a href="helpdesk.html" class="service-link">Learn more →</a>
     </div>
     <div class="service-card">
       <div class="service-icon">📊</div>
       <h3>Network Consultancy</h3>
       <p>Strategic IT planning and network audits. We assess your current infrastructure and design a roadmap that aligns with your business goals.</p>
-      <a href="#contact" class="service-link">Learn more →</a>
+      <a href="consultancy.html" class="service-link">Learn more →</a>
     </div>
   </div>
 </section>

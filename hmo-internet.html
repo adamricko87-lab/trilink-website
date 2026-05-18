@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMO / Landlord Internet – TRILINK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .page-hero { padding: 140px 5% 80px; position: relative; overflow: hidden; }
+  .page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(53,201,122,0.1) 0%, transparent 70%); }
+  .page-hero-grid { position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero-inner { position: relative; z-index: 2; max-width: 700px; }
+  .breadcrumb { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--white); }
+  .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .page-hero p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; max-width: 560px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  section { padding: 80px 5%; }
+
+  /* Who it's for strip */
+  .who-strip { background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 50px 5%; }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .who-card { background: var(--navy3); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+  .who-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .who-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .who-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .feature-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: border-color 0.3s, transform 0.3s; }
+  .feature-card:hover { border-color: rgba(53,201,122,0.4); transform: translateY(-4px); }
+  .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(53,201,122,0.1); border: 1px solid rgba(53,201,122,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.25rem; }
+  .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  .benefits { background: var(--navy2); }
+  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .benefit-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .benefit-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .benefit-check { width: 24px; height: 24px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
+  .benefit-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .benefit-item p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  .how-it-works { background: var(--navy3); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+  .how-it-works h3 { font-family: 'Exo 2', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--green); letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.75rem; }
+  .how-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+  .how-step { display: flex; gap: 1rem; align-items: flex-start; }
+  .how-num { width: 28px; height: 28px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: 'Exo 2', sans-serif; font-size: 0.78rem; font-weight: 800; flex-shrink: 0; }
+  .how-step-text h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .how-step-text p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  .pricing { }
+  .pricing-note { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; font-weight: 300; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .pricing-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
+  .pricing-card.featured { border-color: rgba(53,201,122,0.5); position: relative; }
+  .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad); padding: 4px 16px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; white-space: nowrap; }
+  .pricing-name { font-family: 'Exo 2', sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .pricing-rooms { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .pricing-features li { font-size: 0.825rem; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
+  .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  .cta-band { background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 5%; text-align: center; }
+  .cta-band h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+  .cta-band p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; font-weight: 300; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; max-width: 560px; margin: 0 auto; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  input, textarea, select { background: var(--navy); border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; width: 100%; transition: border-color 0.2s; outline: none; }
+  input:focus, textarea:focus, select:focus { border-color: rgba(53,201,122,0.5); }
+  input::placeholder, textarea::placeholder { color: var(--muted); }
+  select option { background: var(--navy2); }
+  textarea { resize: vertical; min-height: 110px; }
+  .submit-btn { background: var(--grad); color: var(--white); border: none; padding: 0.95rem 2rem; border-radius: 8px; font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; cursor: pointer; text-transform: uppercase; transition: opacity 0.2s, transform 0.2s; }
+  .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1a6ff5"/><stop offset="100%" stop-color="#35c97a"/></linearGradient></defs>
+        <path d="M 13,-32 A 40,40 0 0,1 34.5,20" fill="none" stroke="#1a6ff5" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+        <path d="M 28,20 A 40,40 0 0,1 -28,20" fill="none" stroke="#35c97a" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+        <path d="M -34.5,20 A 40,40 0 0,1 -13,-32" fill="none" stroke="#1a8af0" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+        <circle cx="20" cy="-12" r="7" fill="#1a6ff5" transform="translate(0,0)"/>
+        <circle cx="34" cy="28" r="7" fill="#35c97a" transform="translate(0,0)"/>
+        <circle cx="6" cy="28" r="7" fill="#1a6ff5" transform="translate(0,0)"/>
+      </svg>
+    </div>
+    <span class="logo-text">TRILINK</span>
+  </a>
+  <ul class="nav-links">
+    <li class="has-dropdown">
+      <a href="#">Services</a>
+      <div class="dropdown">
+        <a href="managed-networks.html"><span class="dd-icon">🌐</span> Managed Networks</a>
+        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
+        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
+        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
+        <div class="dropdown-divider"></div>
+        <a href="hmo-internet.html"><span class="dd-icon">🏠</span> HMO / Landlord Internet</a>
+      </div>
+    </li>
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#testimonials">Clients</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Services › HMO / Landlord Internet</div>
+    <div class="section-label">HMO &amp; Landlord Internet</div>
+    <h1>Fast, Reliable Internet <span class="grad-word">Included in Every Room</span></h1>
+    <p>Managed internet solutions built for HMOs, student accommodation, and rental properties. One connection, full coverage, zero hassle for you or your tenants.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get a Property Quote →</a>
+      <a href="#features" class="btn-secondary">How It Works</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHO IT'S FOR -->
+<div class="who-strip">
+  <div class="section-label">Who It's For</div>
+  <h2 class="section-title">Built for Property Professionals</h2>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-icon">🏠</div>
+      <h4>HMO Landlords</h4>
+      <p>Single internet bill, full property coverage — no tenant disputes over WiFi passwords or broadband bills.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🎓</div>
+      <h4>Student Accommodation</h4>
+      <p>High-speed internet that handles multiple simultaneous users — essential for modern student tenants.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🏢</div>
+      <h4>Serviced Apartments</h4>
+      <p>Professional-grade connectivity that's a selling point for guests and long-stay residents alike.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🏗️</div>
+      <h4>Property Developers</h4>
+      <p>Spec internet infrastructure into new builds from the ground up — a real differentiator for buyers and renters.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">📋</div>
+      <h4>Letting Agents</h4>
+      <p>Offer managed internet as a value-add service across your entire portfolio of managed properties.</p>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="section-label">What's Included</div>
+  <h2 class="section-title">Everything Covered, End to End</h2>
+  <p class="section-sub">From installation to ongoing support — we handle the full internet solution so you don't have to.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Full Property Coverage</h3>
+      <p>Professional Wi-Fi access points installed throughout the property — every room, hallway, and common area covered with strong, reliable signal.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👤</div>
+      <h3>Per-Room Network Isolation</h3>
+      <p>Each tenant gets their own isolated network segment — they can't see or interfere with other tenants' devices. Private and secure.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Fair Usage Management</h3>
+      <p>Bandwidth management ensures every tenant gets a fair share of the connection — no single user can hog the bandwidth.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔧</div>
+      <h3>We Handle All Support</h3>
+      <p>Tenants contact us directly with any internet issues — not you. We provide a support line so you're never the internet helpdesk.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧾</div>
+      <h3>Single Monthly Invoice</h3>
+      <p>One simple bill covers the whole property — no per-tenant accounts to manage or chase. Easy to include in rent or service charges.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <h3>24/7 Monitoring</h3>
+      <p>We monitor your property's connection around the clock and respond to outages proactively — often before tenants even notice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="benefits-grid">
+    <div>
+      <div class="section-label">Why It Makes Sense</div>
+      <h2 class="section-title">Internet as a <span class="grad-word">Selling Point</span></h2>
+      <p class="section-sub">Tenants expect fast, reliable internet — especially in shared accommodation. Properties with managed internet let faster and command higher rents.</p>
+      <div class="benefit-list">
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4>Reduce tenant friction</h4>
+            <p>No arguments about the router, the WiFi password, or splitting broadband bills. We take internet disputes off the table entirely.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4>Attract better tenants</h4>
+            <p>Young professionals and students prioritise fast internet. Included broadband makes your listing stand out immediately.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4>Fully managed — hands off</h4>
+            <p>We install it, monitor it, support the tenants, and fix any issues. Your involvement is zero after sign-off.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4>Scales across your portfolio</h4>
+            <p>Managing multiple properties? We can roll out a consistent, managed internet solution across all of them under one agreement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-it-works">
+      <h3>How We Get You Set Up</h3>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-step-text">
+            <h4>Property Survey</h4>
+            <p>We visit the property (or review plans remotely) to design the optimal Wi-Fi layout and determine the right broadband connection.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-step-text">
+            <h4>Installation Day</h4>
+            <p>Our engineers install all hardware — access points, cabling, and router — typically completed within a single day with minimal disruption.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-step-text">
+            <h4>Tenant Handover</h4>
+            <p>We provide simple connection instructions for each room and set up our direct support line so tenants know who to call.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">4</div>
+          <div class="how-step-text">
+            <h4>Ongoing Management</h4>
+            <p>We monitor and maintain everything. You get one monthly invoice and a quiet phone — we handle the rest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="pricing">
+  <div class="section-label">Packages</div>
+  <h2 class="section-title">Simple Pricing by Property Size</h2>
+  <p class="section-sub">All packages include installation, hardware, monitoring, and tenant support. Pricing based on number of rooms.</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Small HMO</div>
+      <div class="pricing-rooms">Up to 5 rooms</div>
+      <ul class="pricing-features">
+        <li>Full property Wi-Fi coverage</li>
+        <li>Per-room network isolation</li>
+        <li>Superfast broadband included</li>
+        <li>24/7 monitoring</li>
+        <li>Tenant support line</li>
+        <li>Single monthly invoice</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-name">Medium HMO</div>
+      <div class="pricing-rooms">6–12 rooms</div>
+      <ul class="pricing-features">
+        <li>Everything in Small HMO</li>
+        <li>Gigabit broadband included</li>
+        <li>Bandwidth management per room</li>
+        <li>Wired ethernet ports per room</li>
+        <li>Priority support SLA</li>
+        <li>Quarterly on-site health check</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Large / Portfolio</div>
+      <div class="pricing-rooms">13+ rooms or multiple properties</div>
+      <ul class="pricing-features">
+        <li>Everything in Medium HMO</li>
+        <li>Dedicated account manager</li>
+        <li>Portfolio-wide management portal</li>
+        <li>Custom SLA agreements</li>
+        <li>Guest network options</li>
+        <li>Bespoke pricing</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pricing-note">All prices quoted on survey — contact us for a tailored quote for your property or portfolio.</p>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="section-label">Get a Quote</div>
+  <h2>Let's Get Your Property Connected</h2>
+  <p>Tell us about your property and we'll come back with a tailored quote — usually within one business day.</p>
+  <form class="contact-form" onsubmit="return false;">
+    <div class="form-row">
+      <input type="text" placeholder="Your Name" />
+      <input type="text" placeholder="Company / Portfolio Name" />
+    </div>
+    <div class="form-row">
+      <input type="email" placeholder="Email Address" />
+      <input type="tel" placeholder="Phone Number" />
+    </div>
+    <div class="form-row">
+      <input type="text" placeholder="Property Postcode" />
+      <select>
+        <option value="" disabled selected>Number of rooms</option>
+        <option>1–5 rooms</option>
+        <option>6–12 rooms</option>
+        <option>13–20 rooms</option>
+        <option>20+ rooms / portfolio</option>
+      </select>
+    </div>
+    <textarea placeholder="Any extra details — existing broadband, building type, specific requirements..."></textarea>
+    <button type="submit" class="submit-btn">Get My Quote →</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1a6ff5"/><stop offset="100%" stop-color="#35c97a"/></linearGradient></defs>
+          <path d="M 13,-32 A 40,40 0 0,1 34.5,20" fill="none" stroke="#1a6ff5" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+          <path d="M 28,20 A 40,40 0 0,1 -28,20" fill="none" stroke="#35c97a" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+          <path d="M -34.5,20 A 40,40 0 0,1 -13,-32" fill="none" stroke="#1a8af0" stroke-width="5.5" stroke-linecap="round" transform="translate(20,20)"/>
+          <circle cx="20" cy="-12" r="7" fill="#1a6ff5" transform="translate(0,0)"/>
+          <circle cx="34" cy="28" r="7" fill="#35c97a" transform="translate(0,0)"/>
+          <circle cx="6" cy="28" r="7" fill="#1a6ff5" transform="translate(0,0)"/>
+        </svg>
+      </div>
+      <span class="logo-text">TRILINK</span>
+    </a>
+    <div class="footer-copy">© 2025 TRILINK. All rights reserved.</div>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
