@@ -632,11 +632,29 @@
   /* MOBILE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
+    .nav-links.mobile-open { display: flex; flex-direction: column; gap: 0; position: absolute; top: 70px; left: 0; right: 0; background: rgba(8,14,26,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    .nav-links.mobile-open > li { border-bottom: 1px solid var(--border); }
+    .nav-links.mobile-open > li:last-child { border-bottom: none; }
+    .nav-links.mobile-open a { padding: 0.9rem 5%; color: var(--white) !important; font-size: 1rem; }
+    .nav-links.mobile-open .nav-cta { background: none; padding: 0.9rem 5%; border-radius: 0; color: var(--green) !important; }
+    .nav-links.mobile-open .has-dropdown > a { justify-content: space-between; }
+    .nav-links.mobile-open .dropdown { display: none; position: static; padding: 0; box-shadow: none; border: none; background: transparent; min-width: unset; }
+    .nav-links.mobile-open .dropdown.mobile-open { display: flex; flex-direction: column; background: var(--navy3); }
+    .nav-links.mobile-open .dropdown a { padding: 0.75rem 5% 0.75rem 8%; font-size: 0.875rem; border-radius: 0; }
+    .nav-links.mobile-open .dropdown .dropdown-divider { display: none; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-visual { display: none; }
     .hero-stats { gap: 1.5rem; }
     .why-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .strip-logos { gap: 1.5rem; }
+  }
+  @media (min-width: 769px) {
+    .hamburger { display: none; }
   }
 </style>
 </head>
@@ -662,7 +680,8 @@
     </div>
     <span class="logo-text">TRILINK</span>
   </a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
     <li class="has-dropdown">
       <a href="#services">Services</a>
       <div class="dropdown">
@@ -932,5 +951,39 @@
   </div>
 </footer>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const servicesToggle = navLinks ? navLinks.querySelector('.has-dropdown > a') : null;
+  const dropdown = navLinks ? navLinks.querySelector('.dropdown') : null;
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('mobile-open');
+    });
+  }
+
+  if (servicesToggle && dropdown) {
+    servicesToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        dropdown.classList.toggle('mobile-open');
+      }
+    });
+  }
+
+  // Close menu when a link is clicked
+  if (navLinks) {
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && !link.closest('.has-dropdown > a')) {
+          hamburger.classList.remove('open');
+          navLinks.classList.remove('mobile-open');
+        }
+      });
+    });
+  }
+</script>
 </body>
 </html>
