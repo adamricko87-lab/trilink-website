@@ -54,6 +54,31 @@
   .submit-btn { background: var(--grad); color: var(--white); border: none; padding: 0.95rem 2rem; border-radius: 8px; font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; cursor: pointer; text-transform: uppercase; transition: opacity 0.2s, transform 0.2s; }
   .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
   @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.mobile-open { display: flex; flex-direction: column; gap: 0; position: absolute; top: 70px; left: 0; right: 0; background: rgba(8,14,26,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    .nav-links.mobile-open > li { border-bottom: 1px solid var(--border); }
+    .nav-links.mobile-open > li:last-child { border-bottom: none; }
+    .nav-links.mobile-open a { padding: 0.9rem 5%; color: var(--white) !important; font-size: 1rem; }
+    .nav-links.mobile-open .nav-cta { background: none; padding: 0.9rem 5%; border-radius: 0; color: var(--green) !important; }
+    .nav-links.mobile-open .has-dropdown > a { justify-content: space-between; }
+    .nav-links.mobile-open .dropdown { display: none; position: static; padding: 0; box-shadow: none; border: none; background: transparent; min-width: unset; }
+    .nav-links.mobile-open .dropdown.mobile-open { display: flex; flex-direction: column; background: var(--navy3); }
+    .nav-links.mobile-open .dropdown a { padding: 0.75rem 5% 0.75rem 8%; font-size: 0.875rem; border-radius: 0; }
+    .nav-links.mobile-open .dropdown .dropdown-divider { display: none; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 769px) {
+    .hamburger { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -229,6 +254,7 @@
     </ul>
   </div>
 </footer>
+
 <script>
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
@@ -253,8 +279,8 @@
 
   if (navLinks) {
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && !link.closest('.has-dropdown > a')) {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768 && !link.parentElement.classList.contains('has-dropdown')) {
           hamburger.classList.remove('open');
           navLinks.classList.remove('mobile-open');
         }
