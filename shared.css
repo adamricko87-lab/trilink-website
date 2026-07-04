@@ -79,6 +79,19 @@ nav {
   font-weight: 600 !important;
 }
 
+.nav-phone {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.nav-phone:hover { color: var(--white); }
+
 /* DROPDOWN */
 .has-dropdown > a::after {
   content: '▾';
@@ -88,12 +101,12 @@ nav {
 
 .dropdown {
   display: none;
-  position: absolute; top: calc(100% + 16px); left: -16px;
+  position: absolute; top: 100%; left: -16px;
   background: var(--navy2);
   border: 1px solid var(--border);
   border-radius: 12px;
   min-width: 230px;
-  padding: 8px;
+  padding: 16px 8px 8px 8px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
@@ -188,6 +201,8 @@ footer {
   flex-wrap: wrap; gap: 2rem;
 }
 .footer-copy { font-size: 0.8rem; color: var(--muted); }
+.footer-phone { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-phone:hover { color: var(--white); }
 .footer-links { display: flex; gap: 2rem; list-style: none; }
 .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }

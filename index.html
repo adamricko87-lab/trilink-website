@@ -95,6 +95,19 @@
     font-weight: 600 !important;
   }
 
+  .nav-phone {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .nav-phone:hover { color: var(--white); }
+
   .has-dropdown > a::after { content: '▾'; font-size: 0.75rem; opacity: 0.6; }
 
   .dropdown {
@@ -270,39 +283,6 @@
 
   @keyframes float { 0%,100%{transform:translateY(-50%);} 50%{transform:translateY(calc(-50% - 20px));} }
 
-  /* STRIP */
-  .strip {
-    background: var(--navy2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem 5%;
-    display: flex; align-items: center; gap: 3rem;
-    overflow: hidden;
-  }
-
-  .strip-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-    font-weight: 600;
-  }
-
-  .strip-logos {
-    display: flex; gap: 3rem; align-items: center;
-    flex: 1;
-  }
-
-  .strip-logo {
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.3);
-    white-space: nowrap;
-  }
-
   /* SECTIONS */
   section { padding: 100px 5%; }
 
@@ -410,7 +390,8 @@
   /* WHY */
   .why-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    max-width: 700px;
     gap: 5rem;
     align-items: center;
   }
@@ -440,54 +421,6 @@
     color: var(--muted);
     line-height: 1.7;
     font-weight: 300;
-  }
-
-  .why-visual {
-    background: var(--navy2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    position: relative;
-  }
-
-  .uptime-number {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 800;
-    background: var(--grad-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-  }
-
-  .uptime-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 2rem; }
-
-  .metric-row { display: flex; flex-direction: column; gap: 1rem; }
-
-  .metric {
-    display: flex; flex-direction: column; gap: 6px;
-  }
-
-  .metric-header {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.8rem;
-  }
-
-  .metric-name { color: var(--muted); }
-  .metric-val { font-weight: 600; font-size: 0.85rem; }
-
-  .metric-bar {
-    height: 4px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .metric-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: var(--grad);
   }
 
   /* TESTIMONIAL */
@@ -616,6 +549,15 @@
     color: var(--muted);
   }
 
+  .footer-phone {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-phone:hover { color: var(--white); }
+
   .footer-links {
     display: flex; gap: 2rem; list-style: none;
   }
@@ -649,9 +591,7 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-visual { display: none; }
     .hero-stats { gap: 1.5rem; }
-    .why-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .strip-logos { gap: 1.5rem; }
   }
   @media (min-width: 769px) {
     .hamburger { display: none; }
@@ -686,15 +626,15 @@
       <a href="#services">Services</a>
       <div class="dropdown">
         <a href="managed-networks.html"><span class="dd-icon">🌐</span> Managed Networks</a>
-        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
-        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
-        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
-        <div class="dropdown-divider"></div>
         <a href="hmo-internet.html"><span class="dd-icon">🏠</span> HMO / Landlord Internet</a>
+        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
+        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
+        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
       </div>
     </li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#testimonials">Clients</a></li>
+    <li><a href="tel:08005554444" class="nav-phone">📞 0800 555 444</a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
@@ -719,16 +659,16 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">99.9%</div>
-        <div class="stat-label">Uptime guarantee</div>
-      </div>
-      <div>
         <div class="stat-num">24/7</div>
         <div class="stat-label">Network monitoring</div>
       </div>
       <div>
         <div class="stat-num">&lt;15m</div>
         <div class="stat-label">Avg. response time</div>
+      </div>
+      <div>
+        <div class="stat-num">Fixed</div>
+        <div class="stat-label">Monthly pricing</div>
       </div>
     </div>
   </div>
@@ -768,18 +708,6 @@
     <circle cx="210" cy="320" r="36" fill="url(#node-glow)"/>
   </svg>
 </section>
-
-<!-- TRUSTED BY -->
-<div class="strip">
-  <div class="strip-label">Trusted by</div>
-  <div class="strip-logos">
-    <span class="strip-logo">ACME CORP</span>
-    <span class="strip-logo">NEXUS GROUP</span>
-    <span class="strip-logo">APEX RETAIL</span>
-    <span class="strip-logo">SILVERSTONE</span>
-    <span class="strip-logo">DELTA SYSTEMS</span>
-  </div>
-</div>
 
 <!-- SERVICES -->
 <section id="services">
@@ -863,40 +791,6 @@
         </div>
       </div>
     </div>
-    <div class="why-visual">
-      <div class="uptime-number">99.9%</div>
-      <div class="uptime-label">Average client uptime — last 12 months</div>
-      <div class="metric-row">
-        <div class="metric">
-          <div class="metric-header">
-            <span class="metric-name">Network Availability</span>
-            <span class="metric-val">99.9%</span>
-          </div>
-          <div class="metric-bar"><div class="metric-fill" style="width:99.9%"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-header">
-            <span class="metric-name">Incident Resolution Rate</span>
-            <span class="metric-val">98.4%</span>
-          </div>
-          <div class="metric-bar"><div class="metric-fill" style="width:98.4%"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-header">
-            <span class="metric-name">Client Satisfaction</span>
-            <span class="metric-val">97%</span>
-          </div>
-          <div class="metric-bar"><div class="metric-fill" style="width:97%"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-header">
-            <span class="metric-name">SLA Compliance</span>
-            <span class="metric-val">100%</span>
-          </div>
-          <div class="metric-bar"><div class="metric-fill" style="width:100%"></div></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -943,6 +837,7 @@
       <span class="logo-text">TRILINK</span>
     </div>
     <div class="footer-copy">© 2025 TRILINK. All rights reserved.</div>
+    <a href="tel:08005554444" class="footer-phone">📞 0800 555 444</a>
     <ul class="footer-links">
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms</a></li>

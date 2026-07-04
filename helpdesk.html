@@ -36,16 +36,12 @@
   .tier-features li { font-size: 0.825rem; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
   .tier-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
   .benefits { padding: 80px 5%; }
-  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .benefits-grid { display: grid; grid-template-columns: 1fr; max-width: 700px; margin: 0 auto; gap: 4rem; align-items: center; }
   .benefit-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
   .benefit-item { display: flex; gap: 1rem; align-items: flex-start; }
   .benefit-check { width: 24px; height: 24px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
   .benefit-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
   .benefit-item p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
-  .stat-panel { background: var(--navy3); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .stat-item { text-align: center; }
-  .stat-num { font-family: 'Exo 2', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; }
-  .stat-desc { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
   .cta-band { background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 5%; text-align: center; }
   .cta-band h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
   .cta-band p { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; font-weight: 300; }
@@ -107,15 +103,15 @@
       <a href="#">Services</a>
       <div class="dropdown">
         <a href="managed-networks.html"><span class="dd-icon">🌐</span> Managed Networks</a>
-        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
-        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
-        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
-        <div class="dropdown-divider"></div>
         <a href="hmo-internet.html"><span class="dd-icon">🏠</span> HMO / Landlord Internet</a>
+        <a href="helpdesk.html"><span class="dd-icon">🖥️</span> IT Helpdesk &amp; Support</a>
+        <a href="monitoring.html"><span class="dd-icon">📡</span> 24/7 Monitoring</a>
+        <a href="consultancy.html"><span class="dd-icon">📊</span> Network Consultancy</a>
       </div>
     </li>
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#testimonials">Clients</a></li>
+    <li><a href="tel:08005554444" class="nav-phone">📞 0800 555 444</a></li>
     <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
@@ -242,12 +238,6 @@
         </div>
       </div>
     </div>
-    <div class="stat-panel">
-      <div class="stat-item"><span class="stat-num">&lt;15m</span><div class="stat-desc">Critical response time</div></div>
-      <div class="stat-item"><span class="stat-num">94%</span><div class="stat-desc">First-call resolution rate</div></div>
-      <div class="stat-item"><span class="stat-num">97%</span><div class="stat-desc">Client satisfaction score</div></div>
-      <div class="stat-item"><span class="stat-num">1hr</span><div class="stat-desc">Avg. remote fix time</div></div>
-    </div>
   </div>
 </section>
 
@@ -286,6 +276,7 @@
       <span class="logo-text">TRILINK</span>
     </a>
     <div class="footer-copy">© 2025 TRILINK. All rights reserved.</div>
+    <a href="tel:08005554444" class="footer-phone">📞 0800 555 444</a>
     <ul class="footer-links">
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms</a></li>
