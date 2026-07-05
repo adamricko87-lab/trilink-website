@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRILINK – Managed Networks & IT Services</title>
+<link rel="icon" type="image/png" sizes="32x32" href="trilink-mark-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="trilink-mark-16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -12,11 +14,11 @@
   :root {
     --navy: #080e1a;
     --navy2: #0d1629;
-    --navy3: #111e35;
-    --blue: #1a6ff5;
-    --green: #35c97a;
-    --grad: linear-gradient(135deg, #1a6ff5, #35c97a);
-    --grad-text: linear-gradient(90deg, #1a6ff5, #35c97a);
+    --navy3: #12213D;
+    --blue: #1F6FEB;
+    --green: #2FA84F;
+    --grad: linear-gradient(135deg, #1F6FEB, #2FA84F);
+    --grad-text: linear-gradient(90deg, #1F6FEB, #2FA84F);
     --white: #ffffff;
     --muted: #8a9bbf;
     --border: rgba(255,255,255,0.08);
@@ -57,6 +59,7 @@
   }
 
   .logo-mark svg { width: 100%; height: 100%; }
+  .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
   .logo-text {
     font-family: 'Exo 2', sans-serif;
@@ -591,6 +594,7 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .hero-visual { display: none; }
     .hero-stats { gap: 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
   }
   @media (min-width: 769px) {
@@ -604,19 +608,7 @@
 <nav>
   <a href="#" class="logo">
     <div class="logo-mark">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#1a6ff5"/>
-            <stop offset="100%" stop-color="#35c97a"/>
-          </linearGradient>
-        </defs>
-        <polygon points="20,3 37,33 3,33" fill="none" stroke="url(#lg1)" stroke-width="2.5" stroke-linejoin="round"/>
-        <circle cx="20" cy="4" r="3" fill="url(#lg1)"/>
-        <circle cx="36" cy="33" r="3" fill="url(#lg1)"/>
-        <circle cx="4" cy="33" r="3" fill="url(#lg1)"/>
-        <circle cx="20" cy="20" r="4" fill="url(#lg1)" opacity="0.6"/>
-      </svg>
+      <img src="trilink-mark-nav.png" alt="TriLink">
     </div>
     <span class="logo-text">TRILINK</span>
   </a>
@@ -663,10 +655,6 @@
         <div class="stat-label">Network monitoring</div>
       </div>
       <div>
-        <div class="stat-num">&lt;15m</div>
-        <div class="stat-label">Avg. response time</div>
-      </div>
-      <div>
         <div class="stat-num">Fixed</div>
         <div class="stat-label">Monthly pricing</div>
       </div>
@@ -677,12 +665,12 @@
   <svg class="hero-visual" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="hg" x1="0" y1="0" x2="420" y2="420" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#1a6ff5" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#35c97a" stop-opacity="0.6"/>
+        <stop offset="0%" stop-color="#1F6FEB" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#2FA84F" stop-opacity="0.6"/>
       </linearGradient>
       <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#1a6ff5" stop-opacity="0.3"/>
-        <stop offset="100%" stop-color="#1a6ff5" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#1F6FEB" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#1F6FEB" stop-opacity="0"/>
       </radialGradient>
     </defs>
     <!-- Connections -->
@@ -821,18 +809,7 @@
   <div class="footer-inner">
     <div class="logo">
       <div class="logo-mark">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#1a6ff5"/>
-              <stop offset="100%" stop-color="#35c97a"/>
-            </linearGradient>
-          </defs>
-          <polygon points="20,3 37,33 3,33" fill="none" stroke="url(#lg2)" stroke-width="2.5" stroke-linejoin="round"/>
-          <circle cx="20" cy="4" r="3" fill="url(#lg2)"/>
-          <circle cx="36" cy="33" r="3" fill="url(#lg2)"/>
-          <circle cx="4" cy="33" r="3" fill="url(#lg2)"/>
-        </svg>
+        <img src="trilink-mark-nav.png" alt="TriLink">
       </div>
       <span class="logo-text">TRILINK</span>
     </div>

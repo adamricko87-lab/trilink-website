@@ -5,11 +5,11 @@
 :root {
   --navy: #080e1a;
   --navy2: #0d1629;
-  --navy3: #111e35;
-  --blue: #1a6ff5;
-  --green: #35c97a;
-  --grad: linear-gradient(135deg, #1a6ff5, #35c97a);
-  --grad-text: linear-gradient(90deg, #1a6ff5, #35c97a);
+  --navy3: #12213D;
+  --blue: #1F6FEB;
+  --green: #2FA84F;
+  --grad: linear-gradient(135deg, #1F6FEB, #2FA84F);
+  --grad-text: linear-gradient(90deg, #1F6FEB, #2FA84F);
   --white: #ffffff;
   --muted: #8a9bbf;
   --border: rgba(255,255,255,0.08);
@@ -45,6 +45,7 @@ nav {
 
 .logo-mark { width: 40px; height: 40px; }
 .logo-mark svg { width: 100%; height: 100%; }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .logo-text {
   font-family: 'Exo 2', sans-serif;
@@ -207,6 +208,3 @@ footer {
 .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-}
